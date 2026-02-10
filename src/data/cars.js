@@ -1,0 +1,77 @@
+export const carDetails = [
+  {
+    id: 1,
+    name: "Omoda E5",
+    category: "Omoda", // PENTING: Untuk filter Tab di Models
+    price: "Mulai Rp 498 Juta",
+    img: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&q=80&w=1000",
+    features: ["430km Range", "Snapdragon Cockpit"], // Untuk Card di depan
+    desc: "Crossover listrik masa depan dengan desain revolusioner 'Light of Movement'. Dilengkapi baterai berkapasitas besar yang mampu menempuh jarak hingga 430km (WLTP).",
+    colors: [
+      { name: "Aqua Green", hex: "#2E5A52", img: "https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2070" },
+      { name: "Midnight Black", hex: "#1A1A1A", img: "https://images.unsplash.com/photo-1605559424843-9e4c2287f386?q=80&w=2070" },
+      { name: "White Pearl", hex: "#F5F5F5", img: "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=2070" },
+    ],
+    specs: [
+      { label: "Range", value: "430 KM" },
+      { label: "0-100 km/h", value: "7.2 Sec" },
+      { label: "Charging", value: "28 Min" },
+      { label: "Torque", value: "340 Nm" },
+    ],
+    gallery: ["https://images.unsplash.com/photo-1626847037657-fd3622613ce3?w=800", "https://images.unsplash.com/photo-1542282088-fe8426682b8f?w=800", "https://images.unsplash.com/photo-1594957904735-983190df038e?w=800"],
+  },
+  {
+    id: 2,
+    name: "Omoda 5 GT",
+    category: "Omoda",
+    price: "Mulai Rp 450 Juta",
+    img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=1000",
+    features: ["AWD System", "200 HP Engine"],
+    desc: "Performa buas dengan mesin 1.6 Turbo yang menghasilkan tenaga 197 HP. Omoda 5 GT AWD memberikan traksi maksimal di segala medan jalan.",
+    colors: [
+      { name: "Phantom Grey", hex: "#4B5563", img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070" },
+      { name: "Blood Red", hex: "#7F1D1D", img: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=2070" },
+    ],
+    specs: [
+      { label: "Engine", value: "1.6 TGDI" },
+      { label: "Power", value: "197 HP" },
+      { label: "Drive", value: "AWD" },
+      { label: "Screen", value: "20.5 Inch" },
+    ],
+    gallery: ["https://images.unsplash.com/photo-1626847037657-fd3622613ce3?w=800", "https://images.unsplash.com/photo-1542282088-fe8426682b8f?w=800"],
+  },
+  {
+    id: 3,
+    name: "Tiggo 8 Pro",
+    category: "Tiggo",
+    price: "Mulai Rp 528 Juta",
+    img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=1000",
+    features: ["First Class Cabin", "2.0 TGDI"],
+    desc: "SUV Flagship dengan kenyamanan kelas satu. Kabin luas, material premium, dan performa mesin yang tangguh untuk keluarga modern.",
+    colors: [{ name: "Roland Purple", hex: "#4a3b52", img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=1000" }],
+    specs: [
+      { label: "Seats", value: "7 Seater" },
+      { label: "Engine", value: "2.0 Turbo" },
+      { label: "Safety", value: "ADAS" },
+      { label: "Warranty", value: "6 Years" },
+    ],
+    gallery: ["https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=1000"],
+  },
+  {
+    id: 4,
+    name: "Chery J6",
+    category: "J6",
+    price: "Coming Soon",
+    img: "https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&q=80&w=1000",
+    features: ["Compact EV", "Urban Style"],
+    desc: "Compact SUV listrik yang lincah untuk mobilitas perkotaan. Desain unik 'Fashion Cube' yang ikonik.",
+    colors: [{ name: "Lime Green", hex: "#A3E635", img: "https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&q=80&w=1000" }],
+    specs: [
+      { label: "Type", value: "BEV" },
+      { label: "Design", value: "Boxy" },
+      { label: "Usage", value: "City Car" },
+      { label: "Tech", value: "Smart" },
+    ],
+    gallery: ["https://images.unsplash.com/photo-1503376763036-066120622c74?auto=format&fit=crop&q=80&w=1000"],
+  },
+];

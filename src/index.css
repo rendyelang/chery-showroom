@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth; /* Ini kuncinya */
+}
+
+body {
+  @apply bg-dark text-light font-sans antialiased;
+  /* Pastikan background body transparan biar AnimatedBackground kelihatan */
+  background-color: #050505;
+}
+
+/* Custom Scrollbar biar makin ganteng */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c6a87c;
+}
