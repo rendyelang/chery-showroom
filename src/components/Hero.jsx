@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
+import j6Hero from "/j6/j6_hero.png";
+import { createWaLink } from "../utils/whatsapp";
 
 const Hero = () => {
   return (
     <section id="home" className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Parallax Effect */}
-      <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 2, ease: "easeOut" }} className="absolute inset-0 z-0">
-        <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2070&auto=format&fit=crop" alt="Chery Omoda Luxury" className="w-full h-full object-cover" />
+      <motion.div initial={{ scale: 1.25 }} animate={{ scale: 1.15, y: -60 }} transition={{ duration: 2, ease: "easeOut" }} className="absolute inset-0 z-0">
+        <img src={j6Hero} alt="Chery J6" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/60 to-transparent"></div>
         <div className="absolute inset-0 bg-black/20"></div>
       </motion.div>
@@ -36,7 +38,11 @@ const Hero = () => {
             <div className="absolute -inset-3 bg-white/30 blur-lg opacity-0 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
           </a>
 
-          <a href="https://wa.me/62812345678" className="px-8 py-4 border border-white/20 text-white backdrop-blur-md rounded-full hover:bg-white hover:text-black transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+          <a
+            href={createWaLink("Halo, saya butuh bantuan sales consultant Chery!")}
+            target="_blank"
+            className="px-8 py-4 border border-white/20 text-white backdrop-blur-md rounded-full hover:bg-white hover:text-black transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+          >
             Konsultasi Sales
           </a>
         </motion.div>
