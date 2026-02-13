@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Logo from "/logo_chery.png";
-import { createWaLink } from "../utils/whatsapp";
+import SellerModal from "./SellerModal"; // Import modalnya
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  // State untuk mengontrol modal
+  const [isSellerModalOpen, setIsSellerModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,12 +24,13 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="fixed w-full z-50 top-0 flex justify-center pt-4 transition-all duration-300">
-      <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className={`
+    <>
+      <div className="fixed w-full z-50 top-0 flex justify-center pt-4 transition-all duration-300">
+        <motion.nav
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className={`
           flex items-center justify-between px-6 transition-all duration-500 ease-in-out
           ${
             isScrolled
@@ -35,52 +38,69 @@ const Navbar = () => {
               : "w-[90%] md:w-[85%] max-w-5xl rounded-full py-3 bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
           }
         `}
-      >
-        {/* === Logo Section === */}
-        <div className="flex items-center gap-2">
-          <a href="#" className="flex items-center gap-2 text-xl md:text-2xl font-bold tracking-widest text-white pl-2">
-            {/* Logo Image: Ukuran responsive */}
-            <img className="w-10 md:w-12 lg:w-20" src={Logo} alt="Logo Chery" />
+        >
+          {/* === Logo Section === */}
+          <div className="flex items-center gap-2">
+            <a href="#" className="flex items-center gap-2 text-xl md:text-2xl font-bold tracking-widest text-white pl-2">
+              {/* Logo Image: Ukuran responsive */}
+              <img className="w-10 md:w-12 lg:w-20" src={Logo} alt="Logo Chery" />
 
-            {/* Teks CHERY: Hidden di mobile, muncul di md ke atas */}
-            <span>CHERY</span>
-          </a>
-        </div>
+              {/* Teks CHERY: Hidden di mobile, muncul di md ke atas */}
+              <span>CHERY</span>
+            </a>
+          </div>
 
-        {/* === Menu Tengah (Desktop Only) === */}
-        <div className="hidden md:flex items-center gap-6">
-          {navLinks.map((link, index) => (
-            <div key={link.name} className="flex items-center gap-6">
-              <a href={link.href} className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-primary relative group ${index === 0 ? "text-white" : "text-gray-300"}`}>
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </a>
-              {/* Dot Separator */}
-              {index < navLinks.length - 1 && <span className="w-1 h-1 rounded-full bg-red-600/80 shadow-[0_0_5px_rgba(220,38,38,0.8)]"></span>}
-            </div>
-          ))}
-        </div>
+          {/* === Menu Tengah (Desktop Only) === */}
+          <div className="hidden md:flex items-center gap-6">
+            {navLinks.map((link, index) => (
+              <div key={link.name} className="flex items-center gap-6">
+                <a href={link.href} className={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-primary relative group ${index === 0 ? "text-white" : "text-gray-300"}`}>
+                  {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                {/* Dot Separator */}
+                {index < navLinks.length - 1 && <span className="w-1 h-1 rounded-full bg-red-600/80 shadow-[0_0_5px_rgba(220,38,38,0.8)]"></span>}
+              </div>
+            ))}
+          </div>
 
-        {/* === Button WA Section === */}
-        <div className="flex items-center gap-4 pr-2">
-          <a
-            href={createWaLink("Halo, saya ingin tanya info tentang Chery")} // Panggil fungsinya
-            target="_blank"
-            // Class flex & padding disesuaikan untuk mobile (p-2 bulat) vs desktop (px-5 py-2 lonjong)
-            className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold transition-all duration-300 shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:shadow-[0_0_25px_rgba(34,197,94,0.6)] 
-              p-2 rounded-full md:px-5 md:py-2 md:rounded-full"
-          >
-            {/* Teks WhatsApp: Hidden di mobile */}
-            <span className="hidden md:block text-sm">WhatsApp</span>
+          {/* === Meet The Seller Button === */}
+          <div className="flex items-center gap-4 pr-1">
+            <button
+              onClick={() => setIsSellerModalOpen(true)}
+              className="group flex items-center gap-3 bg-black/40 hover:bg-black/60 border border-white/10 backdrop-blur-sm pr-1 pl-3 md:pl-4 py-1 rounded-full transition-all duration-300 hover:border-primary/50 hover:shadow-[0_0_15px_rgba(198,168,124,0.2)] relative" // Tambah relative
+            >
+              {/* Text Section */}
+              <div className="text-right hidden md:block">
+                <p className="text-white/60 text-[10px] uppercase tracking-wider leading-tight group-hover:text-primary transition-colors flex items-center justify-end gap-1">
+                  Meet the Seller
+                  {/* Status Text Kecil (Opsional, kalau mau teks 'Online' juga) */}
+                  {/* <span className="text-[8px] text-green-400 font-bold">• Online</span> */}
+                </p>
+                <p className="text-white font-bold text-sm leading-tight">Romi Andre</p>
+              </div>
 
-            {/* Icon WA: Selalu muncul, ukuran responsive */}
-            <svg className="w-5 h-5 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-            </svg>
-          </a>
-        </div>
-      </motion.nav>
-    </div>
+              {/* Profile Image Circle */}
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white/20 p-[2px] group-hover:border-primary transition-colors overflow-hidden relative">
+                <img src="/romi.jpeg" alt="Romi Andre" className="w-full h-full object-cover rounded-full" />
+              </div>
+
+              {/* === ACTIVE DOT INDICATOR (NAVBAR) === */}
+              {/* Posisi: di pojok kanan bawah foto profil */}
+              <div className="absolute right-0 bottom-0 md:right-0 md:bottom-0 translate-x-[-2px] translate-y-[-2px]">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500 border-2 border-[#1A1A2E]"></span>
+                </span>
+              </div>
+            </button>
+          </div>
+        </motion.nav>
+      </div>
+      {/* === RENDER MODAL DI LUAR NAV === */}
+      {/* Gunakan AnimatePresence agar animasi exit modal berjalan */}
+      <AnimatePresence>{isSellerModalOpen && <SellerModal isOpen={isSellerModalOpen} onClose={() => setIsSellerModalOpen(false)} />}</AnimatePresence>
+    </>
   );
 };
 
