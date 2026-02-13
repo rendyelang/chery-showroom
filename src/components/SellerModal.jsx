@@ -59,7 +59,7 @@ const SellerModal = ({ isOpen, onClose }) => {
             {/* Kurangi mb jadi 4 */}
             {/* Glow effect */}
             <div className="absolute inset-0 bg-primary/40 rounded-full blur-xl scale-110 animate-pulse"></div>
-            <img src="/romi.jpeg" alt={sellerData.name} className="w-full h-full object-cover rounded-full border-4 border-[#1A1A2E] relative z-10" />
+            <img src="/romi.jpeg" alt={sellerData.name} className="w-full h-full object-cover object-top rounded-full border-4 border-[#1A1A2E] relative z-10" />
             {/* === ACTIVE STATUS BADGE (MODAL) === */}
             <div className="absolute bottom-1 right-2 z-20 bg-[#1A1A2E] px-2 py-0.5 rounded-full border border-white/10 flex items-center gap-1.5 shadow-lg">
               <span className="relative flex h-2.5 w-2.5">

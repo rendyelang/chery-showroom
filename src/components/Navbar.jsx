@@ -82,7 +82,7 @@ const Navbar = () => {
 
               {/* Profile Image Circle */}
               <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white/20 p-[2px] group-hover:border-primary transition-colors overflow-hidden relative">
-                <img src="/romi.jpeg" alt="Romi Andre" className="w-full h-full object-cover rounded-full" />
+                <img src="/romi.jpeg" alt="Romi Andre" className="w-full h-full object-cover object-top rounded-full" />
               </div>
 
               {/* === ACTIVE DOT INDICATOR (NAVBAR) === */}
