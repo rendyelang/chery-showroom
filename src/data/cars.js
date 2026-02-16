@@ -7,6 +7,7 @@ export const carDetails = [
     name: "Chery J6",
     type: "BEV",
     desc: "SUV Listrik Off-road pertama dengan desain Fashion Cube.",
+    brochure: "/brochures/j6-iwd.pdf",
     // Fitur Default (untuk tampilan Card di depan)
     features: ["Baterai LFP", "Panjang 4406 mm", "Suspensi Multi-Link Aluminium H-Arm"],
     gallery: ["https://images.unsplash.com/photo-1503376763036-066120622c74?w=800"],
@@ -86,6 +87,7 @@ export const carDetails = [
     name: "Chery Omoda E5",
     type: "BEV",
     desc: "Crossover listrik futuristik dengan performa tinggi dan teknologi cerdas.",
+    brochure: "/brochures/e5-pure.pdf",
     features: ["Baterai LFP", "0 - 100 km/h dalam 6,5s", "Jarak EV 505 Km (NEDC)"],
     gallery: ["https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=800"],
     variants: [
@@ -148,6 +150,7 @@ export const carDetails = [
     name: "Tiggo 8 CSH",
     type: "CSH",
     desc: "SUV 7-Seater Hybrid untuk kenyamanan keluarga maksimal.",
+    brochure: "/brochures/tiggo-8-csh.pdf",
     features: ["Jarak Tempuh EV 90 Km", "Jarak Tempuh Hybrid 1300+ Km", "14 ADAS"],
     gallery: ["https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800"],
     variants: [
@@ -182,6 +185,7 @@ export const carDetails = [
     name: "Tiggo 9 CSH",
     type: "CSH",
     desc: "Flagship SUV Hybrid dengan kemewahan tingkat tinggi.",
+    brochure: "/brochures/tiggo-9-csh.pdf",
     features: ["Pure EV Mileage 180km+", "Queen Seat", "Automatic Parking Assist"],
     gallery: ["https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800"],
     variants: [
@@ -209,6 +213,7 @@ export const carDetails = [
     name: "Tiggo Cross",
     type: "ICE",
     desc: "Compact SUV lincah dengan harga terjangkau untuk perkotaan.",
+    brochure: "/brochures/tiggo-cross-comfort.pdf",
     features: ["Mesin 1,5L CVT", "Panjang 4320 MM", "Wheelbase 2630 MM"],
     gallery: ["https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=800"],
     variants: [

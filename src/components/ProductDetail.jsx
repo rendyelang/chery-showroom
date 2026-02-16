@@ -237,7 +237,22 @@ const ProductDetail = () => {
               {typeof activeVariant.price === "number" ? `Tanya Unit Ini (${activeVariant.name})` : `Dapatkan Harga Spesial (${activeVariant.name})`}
             </a>
 
-            <button className="w-full border border-white/20 text-white font-bold py-4 rounded-full hover:bg-white hover:text-black transition-all">Download Brosur {car.name}</button>
+            {/* === NEW: TOMBOL DOWNLOAD BROSUR DINAMIS === */}
+            {car.brochure && (
+              <a
+                href={car.brochure}
+                // Atribut download akan memaksa browser mengunduh file, bukan membukanya di tab baru
+                // Kita format nama filenya biar rapi pas masuk ke laptop/HP user
+                download={`Brosur-${car.name.replace(/\s+/g, "-")}.pdf`}
+                className="w-full border border-white/20 text-white font-bold py-4 rounded-full hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 group"
+              >
+                {/* Icon Download biar makin interaktif */}
+                <svg className="w-5 h-5 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+                Download Brosur {car.name}
+              </a>
+            )}
           </div>
         </div>
       </div>
