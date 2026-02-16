@@ -1,6 +1,6 @@
 // 1. Ganti nomor kamu di sini (format 62...)
 // Cukup ubah ini, semua tombol di website otomatis berubah!
-export const WA_NUMBER = "6282142048886";
+export const WA_NUMBER = "6281330726389";
 
 // 2. Fungsi Helper untuk bikin link otomatis
 export const createWaLink = (message) => {
