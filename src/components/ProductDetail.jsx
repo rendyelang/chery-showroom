@@ -135,12 +135,22 @@ const ProductDetail = () => {
             <p className="text-gray-300 leading-relaxed text-sm font-light mb-6">{car.desc}</p>
 
             {/* HARGA UTAMA (Ikut Varian) */}
-            <div className="mb-6">
+            <div className="mb-8">
               <p className="text-gray-400 text-sm mb-1">Harga OTR Jakarta</p>
               <AnimatePresence mode="wait">
-                <motion.p key={activeVariant.price} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-4xl font-bold text-primary">
-                  {formatRupiah(activeVariant.price)}
-                </motion.p>
+                <motion.div key={activeVariant.price} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-2">
+                  <p className="text-4xl md:text-5xl font-bold text-primary">{typeof activeVariant.price === "number" ? formatRupiah(activeVariant.price) : activeVariant.price}</p>
+
+                  {/* NEW: Teks Pancingan Khusus Harga Misterius */}
+                  {typeof activeVariant.price !== "number" && (
+                    <motion.a href="#cta-button" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm font-medium text-green-400 flex items-center gap-2 animate-pulse">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                      Klik tombol di bawah untuk penawaran harga spesial!
+                    </motion.a>
+                  )}
+                </motion.div>
               </AnimatePresence>
             </div>
           </div>
@@ -163,7 +173,10 @@ const ProductDetail = () => {
                     <div>
                       <p className={`font-bold text-sm ${activeVariant.id === variant.id ? "text-primary" : "text-white"}`}>{variant.name}</p>
                       {/* Tampilkan harga kecil di tombol */}
-                      <p className="text-gray-400 text-xs mt-1">{formatRupiah(variant.price)}</p>
+                      <p className="text-gray-400 text-xs mt-1">
+                        {/* PERUBAHAN DI SINI */}
+                        <p className="text-gray-400 text-xs mt-1">{typeof variant.price === "number" ? formatRupiah(variant.price) : variant.price}</p>
+                      </p>
                     </div>
 
                     {/* Checkmark icon kalo aktif */}
@@ -193,11 +206,24 @@ const ProductDetail = () => {
           </div>
 
           {/* Main CTA */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 mt-4">
             <a
-              href={createWaLink(`Halo, saya fix berminat dengan ${car.name} tipe ${activeVariant.name} warna ${activeColor?.name}.`)}
+              id="cta-button"
+              href={createWaLink(
+                typeof activeVariant.price === "number"
+                  ? `Halo, saya fix berminat dengan ${car.name} tipe ${activeVariant.name} warna ${activeColor?.name}.`
+                  : `Halo, saya sangat tertarik dengan unit eksklusif ${car.name} tipe ${activeVariant.name}. Boleh info untuk harga spesialnya?`,
+              )}
               target="_blank"
-              className="w-full bg-green-600 text-white font-bold py-4 rounded-full text-center hover:bg-green-500 transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2"
+              className={`w-full font-bold py-4 rounded-full text-center transition-all flex items-center justify-center gap-2
+      ${
+        typeof activeVariant.price === "number"
+          ? // Styling Normal: Hijau Biasa
+            "bg-green-600 hover:bg-green-500 text-white shadow-[0_0_20px_rgba(34,197,94,0.3)]"
+          : // Styling Harga Misterius: Gradasi Hijau Terang & Animasi Pulse (Nge-trigger user klik)
+            "bg-gradient-to-r from-green-500 to-emerald-400 hover:from-green-400 hover:to-emerald-300 text-black shadow-[0_0_25px_rgba(52,211,153,0.6)] animate-[pulse_2s_ease-in-out_infinite] scale-105"
+      }
+    `}
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
@@ -207,10 +233,26 @@ const ProductDetail = () => {
                   d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                 ></path>
               </svg>
-              Tanya Unit Ini ({activeVariant.name})
+
+              {typeof activeVariant.price === "number" ? `Tanya Unit Ini (${activeVariant.name})` : `Dapatkan Harga Spesial (${activeVariant.name})`}
             </a>
 
-            <button className="w-full border border-white/20 text-white font-bold py-4 rounded-full hover:bg-white hover:text-black transition-all">Download Brosur {car.name}</button>
+            {/* === NEW: TOMBOL DOWNLOAD BROSUR DINAMIS === */}
+            {car.brochure && (
+              <a
+                href={car.brochure}
+                // Atribut download akan memaksa browser mengunduh file, bukan membukanya di tab baru
+                // Kita format nama filenya biar rapi pas masuk ke laptop/HP user
+                download={`Brosur-${car.name.replace(/\s+/g, "-")}.pdf`}
+                className="w-full border border-white/20 text-white font-bold py-4 rounded-full hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 group"
+              >
+                {/* Icon Download biar makin interaktif */}
+                <svg className="w-5 h-5 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+                Download Brosur {car.name}
+              </a>
+            )}
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ export const carDetails = [
     name: "Chery J6",
     type: "BEV",
     desc: "SUV Listrik Off-road pertama dengan desain Fashion Cube.",
+    brochure: "/brochures/j6-iwd.pdf",
     // Fitur Default (untuk tampilan Card di depan)
     features: ["Baterai LFP", "Panjang 4406 mm", "Suspensi Multi-Link Aluminium H-Arm"],
     gallery: ["https://images.unsplash.com/photo-1503376763036-066120622c74?w=800"],
@@ -14,7 +15,7 @@ export const carDetails = [
       {
         id: "j6-rwd",
         name: "J6 RWD",
-        price: 505500000,
+        price: 560500000,
         image: "/models/bev/j6/j6_rwd/j6_rwd_white.png",
         features: ["Rear Wheel Drive", "Suspensi Multi-Link Aluminium H-Arm", "Unique All-Aluminium Multi-Cavity Body"], // Fitur Spesifik
         colors: [
@@ -27,7 +28,7 @@ export const carDetails = [
       {
         id: "j6-t-rwd",
         name: "J6T RWD",
-        price: 525500000,
+        price: 580500000,
         image: "/models/bev/j6/j6t_rwd/j6t_rwd_black.png",
         features: ["Suspensi Multi-Link Aluminium H-Arm", "625mm Wading Depth", "225mm Ground Clearance"],
         colors: [
@@ -40,7 +41,7 @@ export const carDetails = [
       {
         id: "j6-phantom-rwd",
         name: "J6 RWD PHANTOM",
-        price: 555500000,
+        price: "Rp. XXX.XXX.XXX",
         image: "/models/bev/j6/j6_rwd_phantom.png",
         features: ["Rear Wheel Drive", "Suspensi Multi-Link Aluminium H-Arm", "Unique All-Aluminium Multi-Cavity Body"], // Fitur Beda
         colors: [{ name: "BLACK PHANTOM", hex: "#000", img: "/models/bev/j6/j6_rwd_phantom.png" }],
@@ -48,7 +49,7 @@ export const carDetails = [
       {
         id: "j6-iwd",
         name: "J6 IWD",
-        price: 565500000,
+        price: 625500000,
         image: "/models/bev/j6/j6_iwd.png",
         features: ["Intelligent Wheel Drive", "12 Infinity Speaker", "14 ADAS"],
         colors: [
@@ -61,7 +62,7 @@ export const carDetails = [
       {
         id: "j6-t-iwd",
         name: "J6T IWD",
-        price: 585500000,
+        price: 645500000,
         image: "/models/bev/j6/j6t_iwd.png",
         features: ["Intelligent Wheel Drive", "Jarak EV 436 km (NEDC)", "30 - 80% SOC Fast Charging 25 Menit"],
         colors: [
@@ -74,7 +75,7 @@ export const carDetails = [
       {
         id: "j6-phantom-iwd",
         name: "J6 IWD PHANTOM",
-        price: 615500000,
+        price: "Rp. XXX.XXX.XXX",
         image: "/models/bev/j6/j6_iwd_phantom.png",
         features: ["Intelligent Wheel Drive", "12 Infinity Speaker", "14 ADAS + Phantom Kit"],
         colors: [{ name: "BLACK PHANTOM", hex: "#000", img: "/models/bev/j6/j6_iwd_phantom.png" }],
@@ -86,6 +87,7 @@ export const carDetails = [
     name: "Chery Omoda E5",
     type: "BEV",
     desc: "Crossover listrik futuristik dengan performa tinggi dan teknologi cerdas.",
+    brochure: "/brochures/e5-pure.pdf",
     features: ["Baterai LFP", "0 - 100 km/h dalam 6,5s", "Jarak EV 505 Km (NEDC)"],
     gallery: ["https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=800"],
     variants: [
@@ -148,6 +150,7 @@ export const carDetails = [
     name: "Tiggo 8 CSH",
     type: "CSH",
     desc: "SUV 7-Seater Hybrid untuk kenyamanan keluarga maksimal.",
+    brochure: "/brochures/tiggo-8-csh.pdf",
     features: ["Jarak Tempuh EV 90 Km", "Jarak Tempuh Hybrid 1300+ Km", "14 ADAS"],
     gallery: ["https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800"],
     variants: [
@@ -182,6 +185,7 @@ export const carDetails = [
     name: "Tiggo 9 CSH",
     type: "CSH",
     desc: "Flagship SUV Hybrid dengan kemewahan tingkat tinggi.",
+    brochure: "/brochures/tiggo-9-csh.pdf",
     features: ["Pure EV Mileage 180km+", "Queen Seat", "Automatic Parking Assist"],
     gallery: ["https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800"],
     variants: [
@@ -209,6 +213,7 @@ export const carDetails = [
     name: "Tiggo Cross",
     type: "ICE",
     desc: "Compact SUV lincah dengan harga terjangkau untuk perkotaan.",
+    brochure: "/brochures/tiggo-cross-comfort.pdf",
     features: ["Mesin 1,5L CVT", "Panjang 4320 MM", "Wheelbase 2630 MM"],
     gallery: ["https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=800"],
     variants: [
