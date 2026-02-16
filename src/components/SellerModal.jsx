@@ -17,7 +17,7 @@ const SellerModal = ({ isOpen, onClose }) => {
     ],
     social: {
       wa: "https://wa.me/6282142048886", // Ganti dengan nomor WA asli
-      ig: "https://www.instagram.com/romiandre83/",
+      ig: "https://www.instagram.com/cherywonder_indonesia/",
       linkedin: "https://www.linkedin.com/in/romi-andre-mariano-799b623a1/",
     },
   };
