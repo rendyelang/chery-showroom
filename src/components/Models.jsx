@@ -27,9 +27,18 @@ const Models = () => {
   // Helper: Cari Harga Termurah dari Variants
   const getLowestPrice = (variants) => {
     if (!variants || variants.length === 0) return "Hubungi Kami";
-    // Ambil semua harga, cari yang paling kecil
-    const minPrice = Math.min(...variants.map((v) => v.price));
-    return formatRupiah(minPrice);
+
+    // 1. Filter: Pisahkan varian yang harganya berupa ANGKA
+    const numericPrices = variants.filter((v) => typeof v.price === "number");
+
+    // 2. Kalau ada yang berupa angka, cari yang termurah
+    if (numericPrices.length > 0) {
+      const minPrice = Math.min(...numericPrices.map((v) => v.price));
+      return formatRupiah(minPrice);
+    }
+
+    // 3. Kalau SEMUANYA teks (misal "Call for Price."), tampilkan teksnya langsung
+    return variants[0].price;
   };
 
   return (
