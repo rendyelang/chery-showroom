@@ -26,7 +26,7 @@ const Hero = () => {
         <motion.h1 initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.7, duration: 0.8 }} className="text-3xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight md:leading-[1.1]">
           With Chery with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-100 to-primary">Love</span>
           <span className="block mt-2">
-            Cheery for <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-100 to-primary">Us.</span>
+            Cheer for <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-100 to-primary">Us.</span>
           </span>
         </motion.h1>
 
