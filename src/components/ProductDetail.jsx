@@ -37,6 +37,17 @@ const ProductDetail = () => {
     }).format(number);
   };
 
+  // NEW: Fungsi untuk ganti varian sekaligus scroll ke atas (khusus mobile friendly)
+  const handleVariantChange = (variant) => {
+    setActiveVariant(variant);
+
+    // Auto-scroll ke atas dengan animasi halus (smooth)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   if (!car || !activeVariant) return <div className="min-h-screen flex justify-center items-center text-white">Loading...</div>;
 
   return (
@@ -163,7 +174,7 @@ const ProductDetail = () => {
               {car.variants.map((variant) => (
                 <button
                   key={variant.id}
-                  onClick={() => setActiveVariant(variant)}
+                  onClick={() => handleVariantChange(variant)}
                   className={`
                     text-left p-4 rounded-xl border transition-all duration-300 group relative overflow-hidden
                     ${activeVariant.id === variant.id ? "bg-white/10 border-primary shadow-[0_0_15px_rgba(198,168,124,0.2)]" : "bg-transparent border-white/10 hover:border-white/30 hover:bg-white/5"}
