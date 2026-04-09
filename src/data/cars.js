@@ -105,7 +105,7 @@ export const carDetails = [
       {
         id: "e5-standard",
         name: "E5",
-        price: 399900000,
+        price: 419900000,
         image: "/models/bev/chery_e5/base/e5_base_white",
         features: ["Sunroof Elektrik", "Kamera Panoramik 540 HD", "Power Tailgate Elektrik"],
         colors: [
