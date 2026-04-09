@@ -132,7 +132,7 @@ export const carDetails = [
       {
         id: "cross-csh",
         name: "CROSS CSH",
-        price: 319800000,
+        price: 329800000,
         image: "/models/csh/tiggo_cross/cross_silver.png",
         features: ["Mesin 1,5L DHE", "Panjang 4330 MM", "17 ADAS"],
         colors: [
@@ -157,7 +157,7 @@ export const carDetails = [
       {
         id: "t8-csh-comfort",
         name: "FWD COMFORT",
-        price: 439900000,
+        price: 449900000,
         image: "/models/csh/tiggo8/tiggo_8_csh_fwd_comfort.png",
         features: ["Front Wheel Drive", "Comprehensive Mileage 1300+ Km", "90 km Pure EV Mileage"],
         colors: [{ name: "GREY BAMBOO ASH", hex: "#6e7471", img: "/models/csh/tiggo8/tiggo_8_csh_fwd_comfort.png" }],
@@ -192,7 +192,7 @@ export const carDetails = [
       {
         id: "t9-csh",
         name: "TIGGO 9 CSH",
-        price: 729900000,
+        price: 739900000,
         image: "/models/csh/tiggo9/tiggo9_green.png",
         features: ["Captain Seat", "2.0 PHEV", "Face ID"],
         colors: [
@@ -220,7 +220,7 @@ export const carDetails = [
       {
         id: "cross-comfort",
         name: "COMFORT",
-        price: 259500000,
+        price: 264500000,
         image: "/models/ice/tiggo_cross/tiggo_cross_red.png",
         features: ["Mesin N/A 1,5 L & 7 Speed CVT", "Intelligent Voice Assistant", "Car Link O"],
         colors: [
@@ -256,7 +256,7 @@ export const carDetails = [
       {
         id: "cross-sport",
         name: "SPORT",
-        price: 299900000,
+        price: 304900000,
         image: "/models/ice/tiggo_cross_sport/tiggo_cross_sport_red.png",
         features: ["7 Airbag", "Torsi 320 Nm", "6-Speed Wet DCT"],
         colors: [
@@ -279,7 +279,7 @@ export const carDetails = [
       {
         id: "c5-z",
         name: "C5 Z",
-        price: 319900000,
+        price: 324900000,
         image: "/models/ice/cherry_c5/rz_black.png",
         features: ["Mesin 1,5L TCI", "Suspensi Belakang Multi-link", "Idling Start Stop"],
         colors: [
@@ -313,7 +313,7 @@ export const carDetails = [
       {
         id: "t8-comfort",
         name: "COMFORT",
-        price: 357500000,
+        price: 362500000,
         image: "/models/ice/tiggo8/tiggo8_blue.png",
         features: ["1,5L TGDI", "Kamera Panoramik 360", "6 Airbag"],
         colors: [
