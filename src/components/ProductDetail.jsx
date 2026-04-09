@@ -37,6 +37,9 @@ const ProductDetail = () => {
     }).format(number);
   };
 
+  // DRY: Resolves the active price — color-level override takes priority over variant-level
+  const getActivePrice = () => activeColor?.price ?? activeVariant?.price;
+
   // NEW: Fungsi untuk ganti varian sekaligus scroll ke atas (khusus mobile friendly)
   const handleVariantChange = (variant) => {
     setActiveVariant(variant);
@@ -111,7 +114,9 @@ const ProductDetail = () => {
                     onClick={() => setActiveColor(color)}
                     className={`w-12 h-12 rounded-full border-2 transition-all duration-300 relative group
                         ${activeColor?.name === color.name ? "border-primary scale-110 shadow-[0_0_15px_rgba(198,168,124,0.6)]" : "border-gray-600 hover:border-white"}`}
-                    style={{ backgroundColor: color.hex }}
+                    style={{
+                      background: color.twoTone ? `linear-gradient(to bottom, ${color.twoTone[0]} 50%, ${color.twoTone[1]} 50%)` : color.hex,
+                    }}
                     title={color.name}
                   >
                     {activeColor?.name === color.name && <div className="absolute inset-0 border-2 border-black/50 rounded-full"></div>}
@@ -145,15 +150,15 @@ const ProductDetail = () => {
             </div>
             <p className="text-gray-300 leading-relaxed text-sm font-light mb-6">{car.desc}</p>
 
-            {/* HARGA UTAMA (Ikut Varian) */}
+            {/* HARGA UTAMA (Ikut Varian / Color Override) */}
             <div className="mb-8">
               <p className="text-gray-400 text-sm mb-1">Harga OTR Jakarta</p>
               <AnimatePresence mode="wait">
-                <motion.div key={activeVariant.price} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-2">
-                  <p className="text-4xl md:text-5xl font-bold text-primary">{typeof activeVariant.price === "number" ? formatRupiah(activeVariant.price) : activeVariant.price}</p>
+                <motion.div key={getActivePrice()} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-2">
+                  <p className="text-4xl md:text-5xl font-bold text-primary">{typeof getActivePrice() === "number" ? formatRupiah(getActivePrice()) : getActivePrice()}</p>
 
-                  {/* NEW: Teks Pancingan Khusus Harga Misterius */}
-                  {typeof activeVariant.price !== "number" && (
+                  {/* Teks Pancingan Khusus Harga Misterius */}
+                  {typeof getActivePrice() !== "number" && (
                     <motion.a href="#cta-button" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm font-medium text-green-400 flex items-center gap-2 animate-pulse">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -221,18 +226,16 @@ const ProductDetail = () => {
             <a
               id="cta-button"
               href={createWaLink(
-                typeof activeVariant.price === "number"
-                  ? `Halo, saya fix berminat dengan ${car.name} tipe ${activeVariant.name} warna ${activeColor?.name}.`
+                typeof getActivePrice() === "number"
+                  ? `Halo, saya fix berminat dengan ${car.name} tipe ${activeVariant.name} warna ${activeColor?.name} (${formatRupiah(getActivePrice())}).`
                   : `Halo, saya sangat tertarik dengan unit eksklusif ${car.name} tipe ${activeVariant.name}. Boleh info untuk harga spesialnya?`,
               )}
               target="_blank"
               className={`w-full font-bold py-4 rounded-full text-center transition-all flex items-center justify-center gap-2
       ${
-        typeof activeVariant.price === "number"
-          ? // Styling Normal: Hijau Biasa
-            "bg-green-600 hover:bg-green-500 text-white shadow-[0_0_20px_rgba(34,197,94,0.3)]"
-          : // Styling Harga Misterius: Gradasi Hijau Terang & Animasi Pulse (Nge-trigger user klik)
-            "bg-gradient-to-r from-green-500 to-emerald-400 hover:from-green-400 hover:to-emerald-300 text-black shadow-[0_0_25px_rgba(52,211,153,0.6)] animate-[pulse_2s_ease-in-out_infinite] scale-105"
+        typeof getActivePrice() === "number"
+          ? "bg-green-600 hover:bg-green-500 text-white shadow-[0_0_20px_rgba(34,197,94,0.3)]"
+          : "bg-gradient-to-r from-green-500 to-emerald-400 hover:from-green-400 hover:to-emerald-300 text-black shadow-[0_0_25px_rgba(52,211,153,0.6)] animate-[pulse_2s_ease-in-out_infinite] scale-105"
       }
     `}
             >
@@ -245,7 +248,7 @@ const ProductDetail = () => {
                 ></path>
               </svg>
 
-              {typeof activeVariant.price === "number" ? `Tanya Unit Ini (${activeVariant.name})` : `Dapatkan Harga Spesial (${activeVariant.name})`}
+              {typeof getActivePrice() === "number" ? `Tanya Unit Ini (${activeVariant.name})` : `Dapatkan Harga Spesial (${activeVariant.name})`}
             </a>
 
             {/* === NEW: TOMBOL DOWNLOAD BROSUR DINAMIS === */}
